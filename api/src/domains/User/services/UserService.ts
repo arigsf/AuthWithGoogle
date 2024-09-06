@@ -12,6 +12,10 @@ class UserService {
 	}
 
 	async create(body: User) {
+		if (body.email == null || body.password == null || body.name == null) {
+			throw new InvalidParamError("Algum dado não foi informado!");
+		}
+
 		const checkUser = await prisma.user.findUnique({
 			where: {
 				email: body.email
@@ -20,10 +24,6 @@ class UserService {
 
 		if (checkUser) {
 			throw new QueryError("Esse email já está cadastrado!");
-		}
-
-		if (body.email == null || body.password == null || body.name == null) {
-			throw new InvalidParamError("Algum dado não foi informado!");
 		}
 
 		const encrypted = await this.encryptPassword(body.password);
