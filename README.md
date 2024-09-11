@@ -46,6 +46,8 @@ O .env deve ser inserido dentro da pasta `client` e deve seguir esta estrutura:
 REACT_APP_GOOGLE_CLIENT_ID=
 ```
 
+O valor desse é o mesmo `GOOGLE_CLIENT_ID` do .env do backend.
+
 ### Como rodar
 Para rodar o frontend, siga os passos abaixo:
 1. Navegue para o diretório
